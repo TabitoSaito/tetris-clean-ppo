@@ -1,5 +1,5 @@
-config: "configs/default.yaml" # path to config
-exp_name: "train" # the name of this experiment
+config: "configs/train/default.yaml" # path to config
+exp_name: "test" # the name of this experiment
 seed: 1 # seed of the experiment
 torch_deterministic: true # if toggled, `torch.backends.cudnn.deterministic=False`
 cuda: true # if toggled, cuda will be enabled by default

@@ -18,4 +18,6 @@ dependencies = [
     "tyro>=0.5.10",
     "setuptools<=81.0",
     "pyyaml>=6.0.3",
+    "optuna>=4.8.0",
+    "optuna-dashboard>=0.20.0",
 ]
