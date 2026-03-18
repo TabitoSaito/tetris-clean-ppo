@@ -10,7 +10,7 @@ capture_video: false # whether to capture videos of the agent performances (chec
 
 # Algorithm specific arguments
 env_id: "CartPole-v1" # the id of the environment
-total_timesteps: 500000 # total timesteps of the experiments
+total_timesteps: 50000 # total timesteps of the experiments
 learning_rate: 2.5e-4 # the learning rate of the optimizer
 num_envs: 4 # the number of parallel game environments
 num_steps: 128 # the number of steps to run in each environment per policy rollout
