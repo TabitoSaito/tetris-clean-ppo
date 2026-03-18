@@ -2,7 +2,9 @@
 import os
 import random
 import time
+import sys
 from dataclasses import dataclass
+import yaml
 
 import gymnasium as gym
 import numpy as np
@@ -16,6 +18,8 @@ from torch.utils.tensorboard import SummaryWriter
 
 @dataclass
 class Args:
+    config: str = "configs/default.yaml"
+    """config file"""
     exp_name: str = os.path.basename(__file__)[: -len(".py")]
     """the name of this experiment"""
     seed: int = 1
@@ -77,6 +81,16 @@ class Args:
     num_iterations: int = 0
     """the number of iterations (computed in runtime)"""
 
+def get_args():
+    tmp_args = tyro.cli(Args, args=["--config", "configs/default.yaml"] if "--config" not in sys.argv else None)
+
+    with open(tmp_args.config, "r") as f:
+        conf = yaml.safe_load(f)
+
+    args = tyro.cli(Args, default=Args(**conf))
+
+    return args
+
 
 def make_env(env_id, idx, capture_video, run_name):
     def thunk():
@@ -127,7 +141,7 @@ class Agent(nn.Module):
 
 
 if __name__ == "__main__":
-    args = tyro.cli(Args)
+    args = get_args()
     args.batch_size = int(args.num_envs * args.num_steps)
     args.minibatch_size = int(args.batch_size // args.num_minibatches)
     args.num_iterations = args.total_timesteps // args.batch_size

@@ -17,4 +17,5 @@ dependencies = [
     "tenacity>=8.2.2",
     "tyro>=0.5.10",
     "setuptools<=81.0",
+    "pyyaml>=6.0.3",
 ]
