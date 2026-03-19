@@ -177,6 +177,11 @@ if __name__ == "__main__":
                 nn.utils.clip_grad_norm_(agent.parameters(), args.max_grad_norm)
                 optimizer.step()
 
+            if args.track:
+                if epoch % args.checkpoint_frequency == 0:
+                    torch.save(agent.state_dict(), f"{wandb.run.dir}/agent.pt")
+                    wandb.save(f"{wandb.run.dir}/agent.pt", policy="now")
+
             if args.target_kl is not None and approx_kl > args.target_kl:
                 break
 

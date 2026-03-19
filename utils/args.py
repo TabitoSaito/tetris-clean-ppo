@@ -26,6 +26,8 @@ class TrainArgs:
     """the entity (team) of wandb's project"""
     capture_video: bool = False
     """whether to capture videos of the agent performances (check out `videos` folder)"""
+    checkpoint_frequency: int = 50
+    """save agent every n update epochs"""
 
     # Algorithm specific arguments
     env_id: str = "CartPole-v1"

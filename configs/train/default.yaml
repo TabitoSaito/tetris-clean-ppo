@@ -7,6 +7,7 @@ track: false # if toggled, this experiment will be tracked with Weights and Bias
 wandb_project_name: "cleanRL" # the wandb's project name
 wandb_entity: null # the entity (team) of wandb's project
 capture_video: false # whether to capture videos of the agent performances (check out `videos` folder)
+checkpoint_frequency: 50 # save agent every n update epochs
 
 # Algorithm specific arguments
 env_id: "CartPole-v1" # the id of the environment
